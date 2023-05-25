@@ -1,3 +1,9 @@
+<?php 
+include(CONNECTION_BD);
+//include(BD_SELECT . 'select-section.php');
+include(VALIDATION_PHP . '/validate-createMaterial.php');
+?>
+
 <h2 class="titulo">Registrar Material</h2>
     <form class="container col-md-12 col-sm-4 formulario needs-validation" method="post" novalidate>
         <div class="row g-3 mb-3">
@@ -97,14 +103,14 @@
         <div class="row g-3 mb-3">
             <div class="col">
                 <label for="subirMaterial" class="form-label">Subir material</label>
-                <input class="form-control" type="file" id="subirMaterial" required>
+                <input class="form-control" type="file" name="PDFMaterial" id="subirMaterial" required>
                 <div class="invalid-feedback">
                     Es necesario subir un archivo.
                 </div>
             </div>
             <div class="col">
                 <label for="subirIndice" class="form-label">Subir índice</label>
-                <input class="form-control" type="file" id="subirIndice" required>
+                <input class="form-control" type="file" name="PDFIndice" id="subirIndice" required>
                 <div class="invalid-feedback">
                     Es necesario subir un archivo.
                 </div>

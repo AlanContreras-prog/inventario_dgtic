@@ -17,7 +17,7 @@ include(VALIDATION_PHP . '/validate-createMaterial.php');
                 <div class="form-check m-2">
                     <input class="form-check-input" onclick="showISBN();" type="radio" name="tipo" id="autoria" value="checked" >
                     <label class="form-check-label" for="tipo">
-                        Autoria
+                        Autoría
                     </label>
                 </div>
                 <div class="form-check m-2">

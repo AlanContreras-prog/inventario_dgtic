@@ -1,6 +1,5 @@
 <?php 
 include(CONNECTION_BD);
-//include(BD_SELECT . 'select-section.php');
 include(VALIDATION_PHP . '/validate-createMaterial.php');
 ?>
 
@@ -16,13 +15,13 @@ include(VALIDATION_PHP . '/validate-createMaterial.php');
             </div>
             <div class="col p-3">
                 <div class="form-check m-2">
-                    <input class="form-check-input" onclick="showISBN();" type="radio" name="tipo" id="auditoria" value="checked" checked>
+                    <input class="form-check-input" onclick="showISBN();" type="radio" name="tipo" id="autoria" value="checked" >
                     <label class="form-check-label" for="tipo">
-                        Auditoría
+                        Autoria
                     </label>
                 </div>
                 <div class="form-check m-2">
-                    <input class="form-check-input" onclick="showTiraje()" type="radio" name="tipo" id="compilacion" value="checked" >
+                    <input class="form-check-input" onclick="showTiraje()" type="radio" name="tipo" id="compilacion" value="checked" checked>
                     <label class="form-check-label" for="tipo">
                         Compilación
                     </label>
@@ -30,14 +29,14 @@ include(VALIDATION_PHP . '/validate-createMaterial.php');
             </div>
             <div class="col" id="ISBN">
                 <label for="ISBN">ISBN</label>
-                <input name="ISBN" class="form-control form-control-lg" type="text" placeholder="ISBN" required>
+                <input name="ISBN" class="form-control form-control-lg" type="text" placeholder="ISBN" >
                 <div class="invalid-feedback">
                     Es necesario colocar un ISBN
                 </div>
             </div>
             <div class="col" id="Tiraje">
                 <label for="Tiraje">Tiraje</label>
-                <input name="Tiraje" class="form-control form-control-lg" type="text" placeholder="Tiraje" required>
+                <input name="Tiraje" class="form-control form-control-lg" type="text" placeholder="Tiraje" >
                 <div class="invalid-feedback">
                     Es necesario colocar un Tiraje.
                 </div>

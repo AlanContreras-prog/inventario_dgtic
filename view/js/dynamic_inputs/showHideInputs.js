@@ -3,15 +3,16 @@ const ISBN = document.getElementById('ISBN');
 const Tiraje = document.getElementById('Tiraje');
 
 //Constantes para almacenar el estado de los radio button
-const inputISBN = document.getElementById('auditoria');
+const inputISBN = document.getElementById('autoria');
 const inputTiraje = document.getElementById('compilacion');
 
 //Función para mostrar el campo ISBN
 function showISBN (){
     //Si el radio button de ISBN está activo despliega el input de ISBN y oculta el de tiraje
     if (inputISBN.value == 'checked') {
-        ISBN.style.display = 'none';
-        Tiraje.style.display = 'none';
+        Tiraje.style.display = 'block';
+        ISBN.style.display = 'block';
+        
     }
 }
 
@@ -19,7 +20,8 @@ function showISBN (){
 function showTiraje (){
     //Si el radio button de Tiraje está activo despliega el input de Tiraje y oculta el de ISBN
     if (inputTiraje.value == 'checked') {
-        Tiraje.style.display = 'block';
-        ISBN.style.display = 'block';
+        ISBN.style.display = 'none';
+        Tiraje.style.display = 'none';
     }
 }
+

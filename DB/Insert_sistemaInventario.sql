@@ -1,7 +1,7 @@
-INSERT INTO Sedes (SedeNombre, SedeSiglas)
-        VALUES ('Centro Mascarones', 'CM'),
-                ('Ciudad Universitaria', 'CU'),
-                ('Centro Polanco', 'CP');
+INSERT INTO Sedes (SedeNombre, SedeSiglas, SedeEstado)
+        VALUES ('Centro Mascarones', 'CM', TRUE),
+                ('Ciudad Universitaria', 'CU', TRUE),
+                ('Centro Polanco', 'CP', TRUE);
 
 INSERT INTO Usuario (Sede_Id, UsuarioNombre, UsuarioApaterno, UsuarioAMaterno, UsuarioCorreo, UsuarioPassword, UsuarioEstado, UsuarioRol)
             VALUES (1, 'Angel', 'Argonza', 'Roblero', 'correo1@correo.com', 'password1', TRUE, 'Administrador'),

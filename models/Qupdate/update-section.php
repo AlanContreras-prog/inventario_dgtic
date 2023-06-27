@@ -4,7 +4,7 @@
  * autor: Roan                   *
  *********************************/
 
-    class UpdateUser{
+    class UpdateSection{
 
         public $connection;
 
@@ -14,48 +14,21 @@
         }
 
         /**
-        * Realiza el UPDATE para deshabilitar un usuario en la tabla de usuario.
-        * @param integer $datosUser arreglo que contiene: el id del usuario para ser deshabilitado.
+        * Realiza el UPDATE para habilitar una seccion en la tabla de secciones.
+        * @param integer $sectionId contiene el id de la seccion que va a ser actualizada
         */
-        public function deshabilitarUser($idUser){
+        public function habilitarSection($sectionId){
             try {
                 $connect = $this->connection -> conectar();
                 
                 $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $connect->beginTransaction();
                 
-                $query = "UPDATE usuario SET UsuarioEstado = 0 WHERE Usuario_id = :Usuario_id";
+                $query = "UPDATE secciones SET EstadoSeccion = 1 WHERE Seccion_Id = :Seccion_Id";
     
                 $queryP = $connect -> prepare($query);
     
-                $queryP->bindValue(":Usuario_id", $idUser);
-                
-                $queryP -> execute();
-                
-                return $connect->commit();
-    
-            } catch (PDOException $ex) {
-                echo 'Error: ' .$ex->getMessage() . die();
-                return FALSE;
-            }
-        }
-
-        /**
-        * Realiza el UPDATE para habilitar a un usuario en la tabla de usuario.
-        * @param integer $datosUser arreglo que contiene:el id del usuario que se va a habilitar
-        */
-        public function habilitarUser($idUser){
-            try {
-                $connect = $this->connection -> conectar();
-                
-                $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $connect->beginTransaction();
-                
-                $query = "UPDATE usuario SET UsuarioEstado = 1 WHERE Usuario_id = :Usuario_id";
-    
-                $queryP = $connect -> prepare($query);
-    
-                $queryP->bindValue(":Usuario_id", $idUser);
+                $queryP->bindValue(":Seccion_Id", $sectionId);
                 
                 $queryP -> execute();
                 
@@ -67,29 +40,21 @@
             }
         }
         /**
-        * Realiza el UPDATE para actualizar1 a un usuario en la tabla de usuario.
-        * @param integer $datosUsuario arreglo que contiene:
-        *                $datosUsuario['id'], $datosUsuario['nombre'], $datosUsuario['apaterno'], $datosUsuario['amaterno'],
-        *               $datosUsuario['correo'], $datosUsuario['rol']
+        * Realiza el UPDATE para deshabilitar una seccion en la tabla de secciones.
+        * @param integer $sectionId contiene el id de la seccion que va a ser actualizada
         */
-        public function actualizarUsuario($datosUsuario){
+        public function deshabilitarSection($sectionId){
             try {
                 $connect = $this->connection -> conectar();
                 
                 $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $connect->beginTransaction();
                 
-                $query = "UPDATE usuario SET UsuarioNombre = :UsuarioNombre, UsuarioApaterno = :UsuarioApaterno, UsuarioAmaterno = :UsuarioAmaterno, UsuarioCorreo = :UsuarioCorreo, UsuarioRol = :UsuarioRol, Sede_Id = :Sede_Id WHERE Usuario_Id = :Usuario_Id";
+                $query = "UPDATE secciones SET EstadoSeccion = 0 WHERE Seccion_Id = :Seccion_Id";
     
                 $queryP = $connect -> prepare($query);
     
-                $queryP->bindValue(":Usuario_Id", $datosUsuario['UserId']);
-                $queryP->bindValue(":UsuarioNombre", $datosUsuario['NombreUser']);
-                $queryP->bindValue(":UsuarioApaterno", $datosUsuario['ApaternoUser']);
-                $queryP->bindValue(":UsuarioAmaterno", $datosUsuario['AmaternoUser']);
-                $queryP->bindValue(":UsuarioCorreo", $datosUsuario['CorreoUser']);
-                $queryP->bindValue(":UsuarioRol", $datosUsuario['RolUser']);
-                $queryP->bindValue(":Sede_Id", $datosUsuario['SedeUser']);
+                $queryP->bindValue(":Seccion_Id", $sectionId);
                 
                 $queryP -> execute();
                 
@@ -100,25 +65,51 @@
                 return FALSE;
             }
         }
-
         /**
-        * Realiza el UPDATE para eliminar a un usuario en la tabla de usuario.
-        * @param integer $datosUser arreglo que contiene:
-        *                $datosUser['nombre'], $datosUser['apaterno'], $datosUser['amaterno'],
-        *               $datosUser['correo'], $datosUser['rol']
+        * Realiza el UPDATE para eliminar una seccion en la tabla de secciones.
+        * @param integer $sectionId contiene el id de la seccion que va a ser eliminada
         */
-        public function eliminarUser($idUser){
+        public function eliminarSection($sectionId){
             try {
                 $connect = $this->connection -> conectar();
                 
                 $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $connect->beginTransaction();
                 
-                $query = "DELETE FROM usuario WHERE Usuario_id = :Usuario_id";
+                $query = "DELETE FROM secciones WHERE Seccion_Id = :Seccion_Id";
     
                 $queryP = $connect -> prepare($query);
     
-                $queryP->bindValue(":Usuario_id", $idUser);
+                $queryP->bindValue(":Seccion_Id", $sectionId);
+                
+                $queryP -> execute();
+                
+                return $connect->commit();
+    
+            } catch (PDOException $ex) {
+                echo 'Error: ' .$ex->getMessage() . die();
+                return FALSE;
+            }
+        }
+        /**
+        * Realiza el UPDATE para eliminar una seccion en la tabla de secciones.
+        * @param integer $datosSection contiene los datos para actulizar una seccion.
+        *                   ['id'], ['nombre'], ['tipo']
+        */
+        public function updateSection($datosSection){
+            try {
+                $connect = $this->connection -> conectar();
+                
+                $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $connect->beginTransaction();
+                
+                $query = "UPDATE secciones SET SeccionNombre = :SeccionNombre, TipoSeccion = :TipoSeccion WHERE Seccion_Id = :Seccion_Id";
+    
+                $queryP = $connect -> prepare($query);
+    
+                $queryP->bindValue(":Seccion_Id", $datosSection['id']);
+                $queryP->bindValue(":SeccionNombre", $datosSection['nombre']);
+                $queryP->bindValue(":TipoSeccion", $datosSection['tipo']);
                 
                 $queryP -> execute();
                 

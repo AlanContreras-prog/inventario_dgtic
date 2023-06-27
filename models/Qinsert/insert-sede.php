@@ -24,12 +24,13 @@
                 $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $connect->beginTransaction();
 
-                $query = 'INSERT INTO sedes (SedeNombre, SedeSiglas) VALUES (:SedeNombre, :SedeSiglas)';
+                $query = 'INSERT INTO sedes (SedeNombre, SedeSiglas, SedeEstado) VALUES (:SedeNombre, :SedeSiglas, :SedeEstado)';
 
                 $queryP = $connect->prepare($query);
 
                 $queryP->bindValue(":SedeNombre", $datosSede['nombre']);
                 $queryP->bindValue(":SedeSiglas", $datosSede['siglas']);
+                $queryP->bindValue(":SedeEstado", $datosSede['estado']);
 
                 $queryP->execute();
                 $connect->commit();

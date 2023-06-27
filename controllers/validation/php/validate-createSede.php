@@ -11,11 +11,13 @@
         //DESPUÉS SE ALMACENA EN UNA VARIABLE   
         $nombreSede = trim($_POST['sede'], ' \t\n\r\0\x0');
         $siglasSede = trim($_POST['siglas'], ' \t\n\r\0\x0');
+        $estadoSede = trim($_POST['sedeEstado'], ' \t\n\r');
 
         // almacenar en un array todos los valores ya limpios.
         $sede = array(
             'nombre' => $nombreSede,
-            'siglas' => $siglasSede
+            'siglas' => $siglasSede,
+            'estado' => $estadoSede
         );
 
         //Instancia de la clase InsertSede para realizar el registro.

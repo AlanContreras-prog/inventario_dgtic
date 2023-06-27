@@ -1,10 +1,11 @@
 
+
 <form class="container col-md-12 col-sm-4 formulario" action="" method="post">
         <div class="row g-3 mb-3">
             <div class="col">
                 <label for="NombreMaterial">Nombre de material</label>
-                <input name="NombreMaterial" class="form-control form-control-lg" type="text" placeholder="Nombre de material" disabled>
-            </div>
+                <input name="NombreMaterial" class="form-control form-control-lg" type="text" placeholder="Nombre de material" value="<?php echo $infoMaterial['MaterialNombre']; ?>" disabled>
+            </div>   
             <div class="col p-3">
                 <div class="form-check m-2">
                     <input class="form-check-input" type="radio" name="tipo" id="auditoria" checked disabled>
@@ -51,4 +52,9 @@
                 <input name="NoPaginas" class="form-control form-control-lg" type="text" placeholder="Emisión #" disabled>
             </div>
         </div>
+    
     </form>
+     
+     
+    
+    

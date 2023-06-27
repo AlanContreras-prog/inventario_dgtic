@@ -1,3 +1,7 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 <?php 
     include(CONNECTION_BD);
     include(BD_SELECT . 'select-material.php');
@@ -23,13 +27,13 @@
                     foreach($infoMaterial as $infoMaterial){
                 ?>
                 <tr>
-                    <th><?php echo $infoMaterial['MaterialNombre']; ?></th>
+                    <th><?php echo $infoMaterial['MaterialNombre']; ?> </th>
                     <td><?php echo $infoMaterial['MaterialEdicion']; ?></td>
                     <td><?php echo $infoMaterial['MaterialAutor']; ?></td>
                     <td><?php echo $infoMaterial['MaterialVersion']; ?></td>
                     <td class="btn-tabla-container">
                         <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary btn-tabla" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    <button type="button" class="btn btn-primary  btn-tabla" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                             Detalles
                         </button>
                         <!-- Modal -->
@@ -37,11 +41,11 @@
                             <div class="modal-dialog modal-dialog-centered modal-xl">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title titulo" id="staticBackdropLabel">Nombre de material</h1>
+                                        <h1 class="modal-title titulo" id="staticBackdropLabel"><?php echo $infoMaterial['MaterialNombre']; ?></h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <?php include(LAYOUT."/manage-material/detalle-material.php"); ?>
+                                    <?php include(LAYOUT."/manage-material/detalle-material.php"); ?>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary btn-tabla" data-bs-dismiss="modal">Cerrar</button>

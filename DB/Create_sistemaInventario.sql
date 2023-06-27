@@ -57,6 +57,7 @@ CREATE TABLE Sedes (
     Sede_Id INT NOT NULL AUTO_INCREMENT,
     SedeNombre VARCHAR (100) NOT NULL,
     SedeSiglas VARCHAR (50) NOT NULL,
+    SedeEstado VARCHAR (50) NOT NULL,
 
     CONSTRAINT PkSedeId PRIMARY KEY (Sede_Id ASC)
 );

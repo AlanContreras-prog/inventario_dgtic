@@ -4,7 +4,7 @@
  * autor: Roan                   *
  *********************************/
 
-    class UpdateUser{
+    class UpdateDiplomado{
 
         public $connection;
 
@@ -14,48 +14,21 @@
         }
 
         /**
-        * Realiza el UPDATE para deshabilitar un usuario en la tabla de usuario.
-        * @param integer $datosUser arreglo que contiene: el id del usuario para ser deshabilitado.
+        * Realiza el UPDATE para habilitar un diplomado en la tabla de diplomado.
+        * @param integer $sectionId contiene el id del diplomado que va a ser actualizado
         */
-        public function deshabilitarUser($idUser){
+        public function habilitardiplomado($diplomadoId){
             try {
                 $connect = $this->connection -> conectar();
                 
                 $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $connect->beginTransaction();
                 
-                $query = "UPDATE usuario SET UsuarioEstado = 0 WHERE Usuario_id = :Usuario_id";
+                $query = "UPDATE diplomado SET DiplomadoEstado = 1 WHERE Diplomado_Id = :Diplomado_Id";
     
                 $queryP = $connect -> prepare($query);
     
-                $queryP->bindValue(":Usuario_id", $idUser);
-                
-                $queryP -> execute();
-                
-                return $connect->commit();
-    
-            } catch (PDOException $ex) {
-                echo 'Error: ' .$ex->getMessage() . die();
-                return FALSE;
-            }
-        }
-
-        /**
-        * Realiza el UPDATE para habilitar a un usuario en la tabla de usuario.
-        * @param integer $datosUser arreglo que contiene:el id del usuario que se va a habilitar
-        */
-        public function habilitarUser($idUser){
-            try {
-                $connect = $this->connection -> conectar();
-                
-                $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $connect->beginTransaction();
-                
-                $query = "UPDATE usuario SET UsuarioEstado = 1 WHERE Usuario_id = :Usuario_id";
-    
-                $queryP = $connect -> prepare($query);
-    
-                $queryP->bindValue(":Usuario_id", $idUser);
+                $queryP->bindValue(":Diplomado_Id", $diplomadoId);
                 
                 $queryP -> execute();
                 
@@ -67,29 +40,21 @@
             }
         }
         /**
-        * Realiza el UPDATE para actualizar1 a un usuario en la tabla de usuario.
-        * @param integer $datosUsuario arreglo que contiene:
-        *                $datosUsuario['id'], $datosUsuario['nombre'], $datosUsuario['apaterno'], $datosUsuario['amaterno'],
-        *               $datosUsuario['correo'], $datosUsuario['rol']
+        * Realiza el UPDATE para deshabilitar un diplomado en la tabla de diplomado.
+        * @param integer $diplomadoId contiene el id del diplomado que va a ser actualizado
         */
-        public function actualizarUsuario($datosUsuario){
+        public function deshabilitardiplomado($diplomadoId){
             try {
                 $connect = $this->connection -> conectar();
                 
                 $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $connect->beginTransaction();
                 
-                $query = "UPDATE usuario SET UsuarioNombre = :UsuarioNombre, UsuarioApaterno = :UsuarioApaterno, UsuarioAmaterno = :UsuarioAmaterno, UsuarioCorreo = :UsuarioCorreo, UsuarioRol = :UsuarioRol, Sede_Id = :Sede_Id WHERE Usuario_Id = :Usuario_Id";
+                $query = "UPDATE diplomado SET DiplomadoEstado = 0 WHERE Diplomado_Id = :Diplomado_Id";
     
                 $queryP = $connect -> prepare($query);
     
-                $queryP->bindValue(":Usuario_Id", $datosUsuario['UserId']);
-                $queryP->bindValue(":UsuarioNombre", $datosUsuario['NombreUser']);
-                $queryP->bindValue(":UsuarioApaterno", $datosUsuario['ApaternoUser']);
-                $queryP->bindValue(":UsuarioAmaterno", $datosUsuario['AmaternoUser']);
-                $queryP->bindValue(":UsuarioCorreo", $datosUsuario['CorreoUser']);
-                $queryP->bindValue(":UsuarioRol", $datosUsuario['RolUser']);
-                $queryP->bindValue(":Sede_Id", $datosUsuario['SedeUser']);
+                $queryP->bindValue(":Diplomado_Id", $diplomadoId);
                 
                 $queryP -> execute();
                 
@@ -100,25 +65,51 @@
                 return FALSE;
             }
         }
-
         /**
-        * Realiza el UPDATE para eliminar a un usuario en la tabla de usuario.
-        * @param integer $datosUser arreglo que contiene:
-        *                $datosUser['nombre'], $datosUser['apaterno'], $datosUser['amaterno'],
-        *               $datosUser['correo'], $datosUser['rol']
+        * Realiza el UPDATE para eliminar una diplomado en la tabla de diplomado.
+        * @param integer $diplomadoId contiene el id del diplomado que va a ser eliminado
         */
-        public function eliminarUser($idUser){
+        public function eliminardiplomado($diplomadoId){
             try {
                 $connect = $this->connection -> conectar();
                 
                 $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $connect->beginTransaction();
                 
-                $query = "DELETE FROM usuario WHERE Usuario_id = :Usuario_id";
+                $query = "DELETE FROM diplomado WHERE Diplomado_Id = :Diplomado_Id";
     
                 $queryP = $connect -> prepare($query);
     
-                $queryP->bindValue(":Usuario_id", $idUser);
+                $queryP->bindValue(":Diplomado_Id", $diplomadoId);
+                
+                $queryP -> execute();
+                
+                return $connect->commit();
+    
+            } catch (PDOException $ex) {
+                echo 'Error: ' .$ex->getMessage() . die();
+                return FALSE;
+            }
+        }
+        /**
+        * Realiza el UPDATE para actualizar la informacion de un diplomado en la tabla de diplomado.
+        * @param integer $datosDiplomado contiene los datos para actulizar un diplomado. 
+        *                   ['id'], ['nombre'], ['emision']
+        */
+        public function updatediplomado($datosDiplomado){
+            try {
+                $connect = $this->connection -> conectar();
+                
+                $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $connect->beginTransaction();
+                
+                $query = "UPDATE diplomado SET DiplomadoNombre = :DiplomadoNombre, DiplomadoEmision = :DiplomadoEmision WHERE Diplomado_Id = :Diplomado_Id";
+    
+                $queryP = $connect -> prepare($query);
+    
+                $queryP->bindValue(":Diplomado_Id", $datosDiplomado['id']);
+                $queryP->bindValue(":DiplomadoNombre", $datosDiplomado['nombre']);
+                $queryP->bindValue(":DiplomadoEmision", $datosDiplomado['emision']);
                 
                 $queryP -> execute();
                 

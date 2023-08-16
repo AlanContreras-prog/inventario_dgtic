@@ -9,7 +9,7 @@ const inputTiraje = document.getElementById('compilacion');
 //Función para mostrar el campo ISBN
 function showISBN (){
     //Si el radio button de ISBN está activo despliega el input de ISBN y oculta el de tiraje
-    if (inputISBN.value == 'checked') {
+    if (inputISBN.value == 'autoria') {
         Tiraje.style.display = 'block';
         ISBN.style.display = 'block';
         
@@ -19,7 +19,7 @@ function showISBN (){
 //Función para mostrar el campo de tiraje
 function showTiraje (){
     //Si el radio button de Tiraje está activo despliega el input de Tiraje y oculta el de ISBN
-    if (inputTiraje.value == 'checked') {
+    if (inputTiraje.value == 'compilacion') {
         ISBN.style.display = 'none';
         Tiraje.style.display = 'none';
     }

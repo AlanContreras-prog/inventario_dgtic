@@ -24,16 +24,16 @@
                 $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $connect->beginTransaction();
 
-                $query = 'INSERT INTO material (MaterialNombre, MaterialAuditoria, MaterialCompilacion, MaterialISBN, MaterialTiraje, MaterialAutor, MaterialVersion, 
+                $query = 'INSERT INTO material (MaterialNombre, MaterialAuditoria, MaterialISBN, MaterialTiraje, MaterialAutor, MaterialVersion, 
                                         MaterialEdicion, MaterialPaginas, MaterialSeccion, MaterialArea, MaterialPDF, MaterialIndice)
-                         VALUES (:MaterialNombre, :MaterialAuditoria, :MaterialCompilacion, :MaterialISBN, :MaterialTiraje, :MaterialAutor, :MaterialVersion, 
+                         VALUES (:MaterialNombre, :MaterialAuditoria, :MaterialISBN, :MaterialTiraje, :MaterialAutor, :MaterialVersion, 
                                     :MaterialEdicion, :MaterialPaginas, :MaterialSeccion, :MaterialArea, :MaterialPDF, :MaterialIndice)';
 
                 $queryP = $connect->prepare($query);
 
                 $queryP->bindValue(":MaterialNombre", $datosMaterial['nameMaterial']);
                 $queryP->bindValue(":MaterialAuditoria", $datosMaterial['auditoriaMaterial']);
-                $queryP->bindValue(":MaterialCompilacion", $datosMaterial['compilacionMaterial']);
+                
                 $queryP->bindValue(":MaterialISBN", $datosMaterial['isbnMaterial']);
                 $queryP->bindValue(":MaterialTiraje", $datosMaterial['tirajeMaterial']);
                 $queryP->bindValue(":MaterialAutor", $datosMaterial['autorMaterial']);

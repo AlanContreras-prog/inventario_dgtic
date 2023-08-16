@@ -10,7 +10,7 @@
         //DESPUÉS SE ALMACENA EN UNA VARIABLE   
         $nameMaterial = trim($_POST['NombreMaterial'], ' \t\n\r\0\x0');
         $auditoriaMaterial = trim($_POST['tipo'], ' \t\r\0\x0');
-        $compilacionMaterial= trim($_POST['tipo'], ' \t\n\r\0\x0');
+       
         $isbnMaterial= trim($_POST['ISBN'], ' \t\n\r\0\x0');
         $tirajeMaterial= trim($_POST['Tiraje'], ' \t\n\r\0\x0');
         $autorMaterial= trim($_POST['Autor'], ' \t\n\r\0\x0');
@@ -26,7 +26,7 @@
         $material = array(
             'nameMaterial' => $nameMaterial,
             'auditoriaMaterial' => $auditoriaMaterial,
-            'compilacionMaterial' => $compilacionMaterial,
+            
             'isbnMaterial' => $isbnMaterial,
             'tirajeMaterial' => $tirajeMaterial,
             'autorMaterial' => $autorMaterial,

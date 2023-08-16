@@ -18,7 +18,7 @@
             $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $connect->beginTransaction();
 
-            $query = "SELECT MaterialNombre, MaterialAuditoria, MaterialCompilacion, MaterialISBN, MaterialTiraje, MaterialAutor, MaterialVersion, 
+            $query = "SELECT Material_Id, MaterialNombre, MaterialAuditoria,  MaterialISBN, MaterialTiraje, MaterialAutor, MaterialVersion, 
             MaterialEdicion, MaterialPaginas, MaterialSeccion, MaterialArea, MaterialPDF, MaterialIndice FROM material";
             $queryP = $connect -> prepare($query);
             $queryP -> execute();

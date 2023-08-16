@@ -1,4 +1,3 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -27,13 +26,14 @@
                     foreach($infoMaterial as $infoMaterial){
                 ?>
                 <tr>
-                    <th><?php echo $infoMaterial['MaterialNombre']; ?> </th>
+                  <!--  <th><?php echo $infoMaterial['Material_Id']; ?></th> -->
+                    <th><?php echo $infoMaterial['MaterialNombre']; ?></th>
                     <td><?php echo $infoMaterial['MaterialEdicion']; ?></td>
                     <td><?php echo $infoMaterial['MaterialAutor']; ?></td>
                     <td><?php echo $infoMaterial['MaterialVersion']; ?></td>
                     <td class="btn-tabla-container">
                         <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary  btn-tabla" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    <button type="button" class="btn btn-primary btn-tabla" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                             Detalles
                         </button>
                         <!-- Modal -->
@@ -45,7 +45,7 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                                     </div>
                                     <div class="modal-body">
-                                    <?php include(LAYOUT."/manage-material/detalle-material.php"); ?>
+                                        <?php include(LAYOUT."/manage-material/detalle-material.php"); ?>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary btn-tabla" data-bs-dismiss="modal">Cerrar</button>
@@ -60,9 +60,10 @@
                         <button type="button" class="btn btn-primary btn-tabla">Deshabilitar</button>
                         <button type="button" class="btn btn-primary btn-tabla">Editar</button>
                         <button type="button" class="btn btn-primary btn-tabla">Descargar</button>
-                    </td>
+                  </td>   
                 </tr>
                 <?php } ?>
             </tbody>
         </table>
+    </div>
     </div>

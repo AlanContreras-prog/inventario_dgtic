@@ -104,6 +104,7 @@ CREATE TABLE Material (
     MaterialArea VARCHAR(50) NOT NULL, 
     MaterialPDF VARCHAR(200) NOT NULL,
     MaterialIndice VARCHAR(200) NOT NULL,
+    EstadoMaterial INT NOT NULL,
 
     CONSTRAINT PkMaterialId PRIMARY KEY (Material_Id ASC)
 );

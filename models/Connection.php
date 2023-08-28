@@ -20,11 +20,11 @@
         public function __construct()
         {
             //host al que se va a conectar
-            $this -> host = 'localhost:3307';
+            $this -> host = 'localhost:3310';
             //nombre de la base de datos
             $this -> dbName = 'sistemainventario';
             //Puerto de la base de datos
-            $this -> port = '3307';
+            $this -> port = '3310';
             //Usuario con el que se va a identificar
             $this -> user = 'root';
             //Contraseña para acceder a la bd

@@ -19,7 +19,7 @@
             $connect->beginTransaction();
 
             $query = "SELECT Material_Id, MaterialNombre, MaterialAuditoria,  MaterialISBN, MaterialTiraje, MaterialAutor, MaterialVersion, 
-            MaterialEdicion, MaterialPaginas, MaterialSeccion, MaterialArea, MaterialPDF, MaterialIndice FROM material";
+            MaterialEdicion, MaterialPaginas, MaterialSeccion, MaterialArea, MaterialPDF, MaterialIndice, EstadoMaterial FROM material";
             $queryP = $connect -> prepare($query);
             $queryP -> execute();
             $resultado = $queryP->fetchAll(PDO::FETCH_ASSOC);

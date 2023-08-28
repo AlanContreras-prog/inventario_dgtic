@@ -16,11 +16,11 @@
             </div>
             <div class="col">
                 <label for="ISBN">ISBN</label>
-                <input name="ISBN" class="form-control form-control-lg" type="text" placeholder="ISBN" disabled>
+                <input name="ISBN" class="form-control form-control-lg" type="text" placeholder="ISBN" value="<?php echo $infoMaterial['MaterialISBN']; ?>" disabled>
             </div>
             <div class="col">
                 <label for="Tiraje">Tiraje</label>
-                <input name="Tiraje" class="form-control form-control-lg" type="text" placeholder="Tiraje" disabled>
+                <input name="Tiraje" class="form-control form-control-lg" type="text" placeholder="Tiraje" value="<?php echo $infoMaterial['MaterialTiraje']; ?>" disabled>
             </div>
         </div>
         <div class="row g-3 mb-3">

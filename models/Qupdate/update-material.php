@@ -118,7 +118,7 @@
                 $queryP->bindValue(":MaterialVersion", $datosMaterial['version']);
                 $queryP->bindValue(":MaterialEdicion", $datosMaterial['edicion']);
                 $queryP->bindValue(":MaterialPaginas", $datosMaterial['paginas']);
-                $queryP->bindValue(":MaterialSeccion", $datosMaterial['seccion']);
+                $queryP->bindValue(":MaterialSeccion", $datosMaterial['MaterialSeccion']);
                 $queryP->bindValue(":MaterialArea", $datosMaterial['area']);
                 $queryP->bindValue(":MaterialPDF", $datosMaterial['pdf']);
                 $queryP->bindValue(":MaterialIndice", $datosMaterial['indice']);

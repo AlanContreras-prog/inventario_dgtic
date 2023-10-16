@@ -73,49 +73,105 @@ include(VALIDATION_PHP . '/validate-createMaterial.php');
                     Es necesario colocar un número de páginas.
                 </div>
             </div>
+        </div>
+        
+       <div class="col">
+    <label for="tipoSeccion">Tipo de Sección</label>
+    <select name="tipoSeccion" id="tipoSeccion" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" required>
+        <!-- La leyenda "Selecciona un tipo de sección" aparecerá una sola vez -->
+        <option selected disabled value="">Selecciona un tipo de sección</option>
+        <!-- Las opciones de tipo de sección se cargarán dinámicamente -->
+        <option value="Diplomados">Diplomados</option> <!-- Opción para Diplomados -->
+    </select>
+    <div class="invalid-feedback">
+        Es necesario seleccionar un tipo de sección
+    </div>
+</div>
 
-        </div>
-        <div class="row g-9 mb-3">
-            <div class="col">
-                <label for="seccion">Sección del material</label>
-                <select name= "seccion" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" required>
-                    <option selected disabled default value="">Selecciona una opción</option>
-                    <option value="Cursos de actualización">Cursos de actualización</option>
-                    <option value="Diplomados">Diplomados</option>
-                    <option value="Institucionales">Institucionales</option>
-                </select>
-                <div class="invalid-feedback">
-                    Es necesario seleccionar una sección
-                </div>
-            </div>
-            <div class="col">
-                <label for="area">Área del material</label>
-                <select name="area" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" required>
-                    <option selected disabled default value="">Selecciona una opción</option>
-                    <option value="1">Áreas temáticas</option>
-                    <option value="2">Instituciones</option>
-                    <option value="3">Emisiones</option>
-                </select>
-                <div class="invalid-feedback">
-                    Es necesario seleccionar un área
-                </div>
-            </div>
-        </div>
+<div class="col">
+    <label for="seccion">Sección del material</label>
+    <select name="seccion" id="seccion" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" required>
+        <option selected disabled value="">Selecciona una sección</option>
+        <!-- Las opciones de sección se cargarán dinámicamente -->
+    </select>
+    <div class="invalid-feedback">
+        Es necesario seleccionar una sección
+    </div>
+</div>
+
+
+
+
+
+
+<script>
+// Obtén los elementos select
+const tipoSeccionSelect = document.getElementById('tipoSeccion');
+const seccionSelect = document.getElementById('seccion');
+
+// Realizar una solicitud AJAX para obtener los tipos de sección desde el servidor
+fetch('http://localhost/inventario_dgtic/models/Qselect/obtener_tipos_seccion.php')
+.then(response => response.text()) // Obtener el texto en lugar de JSON
+.then(tiposSeccion => {
+    // Limpiar las opciones actuales del select de "Tipo de Sección"
+    tipoSeccionSelect.innerHTML = '<option selected disabled default value="">Selecciona un tipo de sección</option>';
+    
+    // Agregar las nuevas opciones al select de "Tipo de Sección"
+    tipoSeccionSelect.innerHTML += tiposSeccion;
+
+    // Agregar la opción "Diplomados" al tipo de sección
+    tipoSeccionSelect.innerHTML += '<option value="Diplomados">Diplomados</option>';
+})
+.catch(error => console.error('Error:', error));
+
+// Agregar un evento change al select de "Tipo de Sección" para cargar las opciones de "Sección" desde el servidor
+tipoSeccionSelect.addEventListener('change', () => {
+    const tipoSeccionSeleccionado = tipoSeccionSelect.value;
+
+    if (tipoSeccionSeleccionado === 'Diplomados') {
+        // Si se selecciona "Diplomados," realizar una solicitud AJAX para cargar nombres de diplomados
+        fetch('http://localhost/inventario_dgtic/models/Qselect/obtener_diplomados.php')
+        .then(response => response.text()) // Obtener el texto en lugar de JSON
+        .then(diplomados => {
+            // Limpiar las opciones actuales del select de "Sección"
+            seccionSelect.innerHTML = '<option selected disabled default value="">Selecciona una sección</option>';
+            // Agregar las nuevas opciones de diplomados al select de "Sección"
+            seccionSelect.innerHTML += diplomados;
+        })
+        .catch(error => console.error('Error:', error));
+    } else {
+        // Si se selecciona otra opción, realiza la solicitud AJAX normal para cargar secciones
+        fetch(`http://localhost/inventario_dgtic/models/Qselect/obtener_secciones.php?tipoSeccion=${tipoSeccionSeleccionado}`)
+        .then(response => response.text()) // Obtener el texto en lugar de JSON
+        .then(secciones => {
+            // Limpiar las opciones actuales del select de "Sección"
+            seccionSelect.innerHTML = '<option selected disabled default value="">Selecciona una sección</option>';
+            // Agregar las nuevas opciones al select de "Sección"
+            seccionSelect.innerHTML += secciones;
+        })
+        .catch(error => console.error('Error:', error));
+    }
+});
+</script>
+
+
         <div class="row g-3 mb-3">
-            <div class="col">
-                <label for="subirMaterial" class="form-label">Subir material</label>
-                <input class="form-control" type="file" name="PDFMaterial" id="subirMaterial" required>
-                <div class="invalid-feedback">
-                    Es necesario subir un archivo.
-                </div>
+        <form action="subir_archivos.php" method="post" enctype="multipart/form-data">
+        <div class="col">
+            <label for="subirMaterial" class="form-label">Subir material</label>
+            <input class="form-control" type="file" name="PDFMaterial" id="subirMaterial" required>
+            <div class="invalid-feedback">
+                Es necesario subir un archivo.
             </div>
-            <div class="col">
-                <label for="subirIndice" class="form-label">Subir índice</label>
-                <input class="form-control" type="file" name="PDFIndice" id="subirIndice" required>
-                <div class="invalid-feedback">
-                    Es necesario subir un archivo.
-                </div>
+        </div>
+        <div class="col">
+            <label for="subirIndice" class="form-label">Subir índice</label>
+            <input class="form-control" type="file" name="PDFIndice" id="subirIndice" required>
+            <div class="invalid-feedback">
+                Es necesario subir un archivo.
             </div>
+        </div>
+    </form>
             <div class="col-md-12">
                 <label for="guardarMaterial"> </label>
                 <input name="guardarMaterial" class="btn btn-primary botonCreateuser" type="submit" value="Guardar material">

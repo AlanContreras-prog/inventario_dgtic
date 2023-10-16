@@ -17,8 +17,8 @@
         $versiónMaterial= trim($_POST['Versión'], ' \t\n\r\0\x0');
         $añoEdicionMaterial= trim($_POST['AñoEdicion'], ' \t\n\r\0\x0');
         $noPaginasMaterial= trim($_POST['NoPaginas'], ' \t\n\r\0\x0');
-        $seccionMaterial= trim($_POST['seccion'], ' \t\n\r\0\x0');
-        $areaMaterial= trim($_POST['area'], ' \t\n\r\0\x0');
+        $seccionMaterial= trim($_POST['tipoSeccion'], ' \t\n\r\0\x0');
+        $areaMaterial= trim($_POST['seccion'], ' \t\n\r\0\x0');
         $pdfMaterial= trim($_POST['PDFMaterial'], ' \t\n\r\0\x0');
         $pdfIndice= trim($_POST['PDFIndice'], ' \t\n\r\0\x0');
 
